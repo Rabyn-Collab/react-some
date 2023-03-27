@@ -20,6 +20,7 @@ const Add = () => {
     // country: Yup.string().required(),
     // program: Yup.array().min(1, 'content require').required(),
     // gender: Yup.string().required(),
+    // image: Yup.mixed().required('Required').test("fileFormat", 'invalid', (val) => val && ['image/jpg'].includes(val.type))
   });
 
 
@@ -33,7 +34,7 @@ const Add = () => {
       program: [],
       gender: '',
       id: nanoid(),
-      // image: '',
+      image: null,
       imageUrl: ''
     },
     onSubmit: (val, { resetForm }) => {
@@ -146,10 +147,11 @@ const Add = () => {
             type="file"
             name='image'
             id='image'
+
             accept='image/*'
             onChange={(e) => {
               const file = e.target.files[0];
-              // formik.setFieldValue('image', file);
+              formik.setFieldValue('image', file);
               // const simple = URL.createObjectURL(file);
               // formik.setFieldValue('imageUrl', simple);
               const reader = new FileReader();
@@ -159,6 +161,9 @@ const Add = () => {
               });
             }}
           />
+
+
+          {formik.errors.image && formik.touched.image ? <h1>{formik.errors.image}</h1> : null}
 
           {formik.values.imageUrl && <img className='h-[200px] my-4' src={formik.values.imageUrl} alt="" />}
 

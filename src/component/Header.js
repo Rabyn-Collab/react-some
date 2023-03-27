@@ -41,6 +41,7 @@ const Header = () => {
       <div className='hidden sm:flex'>
         <button onClick={() => toggle()}> {isOpen ? <VscClose size={30} /> : <VscListFilter size={30} />} </button>
       </div>
+      {/* <NavLink to='/detail/dkhasdkjasjkdhaskjdhksjdhksajdhsakjd'>Deatil</NavLink> */}
 
       <div className='space-x-5 sm:hidden pt-1'>
         {navs.map((n, i) => {

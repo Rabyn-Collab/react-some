@@ -6,7 +6,8 @@ import { crudLocal, getData } from "./local";
 
 
 const initialState = {
-  userInfo: getData()
+  userInfo: getData(),
+  isOpen: false
 };
 
 
@@ -21,6 +22,7 @@ const userSlice = createSlice({
     },
     removeUser: (state, action) => {
       state.userInfo.splice(action.payload, 1);
+      state.isOpen = false;
       crudLocal(state.userInfo);
     },
     updateUser: (state, action) => {
@@ -29,11 +31,14 @@ const userSlice = createSlice({
       });
       crudLocal(state.userInfo);
     },
+    toggle: (state, action) => {
+      state.isOpen = !state.isOpen;
+    }
 
   }
 });
 
 
-export const { addUser, removeUser, updateUser } = userSlice.actions;
+export const { addUser, removeUser, updateUser, toggle } = userSlice.actions;
 export default userSlice.reducer;
 
