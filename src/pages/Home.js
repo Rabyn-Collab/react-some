@@ -29,7 +29,6 @@ const Home = () => {
     <>
 
 
-
       <div className='p-10 grid grid-cols-3 gap-10'>
         {user.map((u, i) => {
           return <div key={u.id}>
@@ -72,6 +71,7 @@ const Home = () => {
                     <button onClick={() => handleOpen()}>Cancel</button>
                     <button onClick={() => {
                       dispatch(removeUser(i));
+
                     }}>Confirm</button>
 
                   </div>

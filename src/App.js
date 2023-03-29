@@ -9,19 +9,11 @@ import Home from './pages/Home'
 
 const App = () => {
 
-  // let data = [{ id: 1, title: 'hello' }, { id: 2, title: 'lio' }];
 
-  // // let m = data.map((d) => {
-  // //   return d.id === 1 ? 90 : d;
-  // // });
-
-  // data = data.map((d) => {
-  //   return d.id == 1 ? { id: 1, title: 'see you' } : d
-  // });
-
-  // console.log(data);
   return (
     <div>
+
+
 
       <Header />
       <Routes>
@@ -29,7 +21,7 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='contact' element={<Add />} />
         <Route path='update' element={<Update />} />
-        {/* <Route path='detail/:id' element={<Detail />} /> */}
+        <Route path='detail/:id' element={<Detail />} />
 
       </Routes>
 

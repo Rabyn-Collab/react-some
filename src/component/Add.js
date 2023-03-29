@@ -14,13 +14,20 @@ const Add = () => {
   const nav = useNavigate();
   const dispatch = useDispatch();
   const valSchema = Yup.object().shape({
-    // email: Yup.string().email().required(),
-    // username: Yup.string().min(5, 'too short').max(20, 'max character 20').required(),
-    // msg: Yup.string().min(10, 'too short').max(200, 'max character exceed').required(),
-    // country: Yup.string().required(),
-    // program: Yup.array().min(1, 'content require').required(),
-    // gender: Yup.string().required(),
-    // image: Yup.mixed().required('Required').test("fileFormat", 'invalid', (val) => val && ['image/jpg'].includes(val.type))
+    email: Yup.string().email().required(),
+    username: Yup.string().min(5, 'too short').max(20, 'max character 20').required(),
+    msg: Yup.string().min(10, 'too short').max(200, 'max character exceed').required(),
+    country: Yup.string().required(),
+    program: Yup.array().min(1, 'content require').required(),
+    gender: Yup.string().required(),
+    image: Yup.mixed()
+      .required("Please upload an image")
+      .test("fileFormat", "Unsupported file format", (value) =>
+        value ? ["image/jpeg", "image/png", "image/jpg"].includes(value.type) : true
+      )
+    // .test("fileSize", "File size too large", (value) =>
+    //   value ? value.size <= 1048576 : true
+    // ),
   });
 
 
