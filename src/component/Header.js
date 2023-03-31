@@ -1,17 +1,30 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import { IconName, VscClose, VscListFilter } from "react-icons/vsc";
+import { NavLink, useNavigate } from 'react-router-dom'
+import { VscClose, VscListFilter } from "react-icons/vsc";
+import { useFormik } from 'formik';
 const Header = () => {
 
   const [isOpen, setOpen] = useState(false);
+
+  const nav = useNavigate();
+  const formik = useFormik({
+    initialValues: {
+      search: ''
+    },
+    onSubmit: (val) => {
+      nav(`/movie/${val}`);
+    }
+  });
+
+
   const navs = [
     {
-      label: 'About',
-      path: '/about'
+      label: 'Top Rated',
+      path: '/movie/top_rated'
     },
     {
-      label: 'Contact',
-      path: '/contact'
+      label: 'UpComing',
+      path: '/movie/upcoming'
     }
   ];
 
@@ -41,13 +54,23 @@ const Header = () => {
       <div className='hidden sm:flex'>
         <button onClick={() => toggle()}> {isOpen ? <VscClose size={30} /> : <VscListFilter size={30} />} </button>
       </div>
-      {/* <NavLink to='/detail/dkhasdkjasjkdhaskjdhksjdhksajdhsakjd'>Deatil</NavLink> */}
 
-      <div className='space-x-5 sm:hidden pt-1'>
+
+      <div className='space-x-5 sm:hidden pt-1 flex'>
         {navs.map((n, i) => {
           return <NavLink className='hover:bg-white hover:p-2 hover:text-black ' to={n.path} key={i} >{n.label}</NavLink>
         })}
+        <form onSubmit={formik.handleSubmit}>
+
+          <label htmlFor="search"></label>
+          <div className='relative'>
+            <input type="text" name='search' value={formik.values.search} className='outline-none rounded-lg pl-2 py-1 text-black' />
+          </div>
+
+        </form>
       </div>
+
+
 
     </div>
   )
