@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router';
+import { Outlet, useParams } from 'react-router';
 import { useGetMovieByCategoryQuery } from '../features/movieApi'
 import DataShow from '../component/DataShow';
 
@@ -10,7 +10,8 @@ const MovieByCategory = () => {
 
   return (
     <div>
-      <DataShow data={data} isLoading={isLoading} />
+      <DataShow data={data} isLoading={isLoading} category={category} isPage={true} />
+      <Outlet />
     </div>
   )
 }

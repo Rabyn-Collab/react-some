@@ -7,7 +7,7 @@ const Detail = () => {
   const { state } = useLocation();
   const { isError, error, isLoading, data } = useGetVideoMovieQuery(state.id);
 
-  console.log(data);
+
 
   return (
     <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${state.backdrop_path})`, backgroundRepeat: 'no-repeat' }} className='relative h-screen w-full'>

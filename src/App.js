@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Search from './pages/Search'
 import MovieByCategory from './pages/MovieByCategory'
 import Detail from './component/Detail'
+import PageQuery from './pages/PageQuery'
 
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='movie/:category' element={<MovieByCategory />} />
+        <Route path='movie/page/:id' element={<PageQuery />} />
         <Route path='movie/search/:search' element={<Search />} />
         <Route path='movie/detail/:id' element={<Detail />} />
       </Routes>
