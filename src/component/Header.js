@@ -11,13 +11,18 @@ const Header = () => {
     initialValues: {
       search: ''
     },
-    onSubmit: (val) => {
-      nav(`/movie/${val}`);
+    onSubmit: (val, { resetForm }) => {
+      nav(`/movie/search/${val.search}`);
+      resetForm();
     }
   });
 
 
   const navs = [
+    {
+      label: 'Popular',
+      path: '/movie/popular'
+    },
     {
       label: 'Top Rated',
       path: '/movie/top_rated'
@@ -34,7 +39,7 @@ const Header = () => {
 
 
   return (
-    <div className='flex justify-between px-9   bg-black text-white py-3 items-start sticky top-0 z-50'>
+    <div className='flex justify-between px-9   bg-black text-white py-3  sticky top-0 z-50 items-center'>
 
       <div>
 
@@ -56,15 +61,27 @@ const Header = () => {
       </div>
 
 
-      <div className='space-x-5 sm:hidden pt-1 flex'>
+      <div className='space-x-5 sm:hidden pt-1 flex items-center'>
         {navs.map((n, i) => {
-          return <NavLink className='hover:bg-white hover:p-2 hover:text-black ' to={n.path} key={i} >{n.label}</NavLink>
+          return <NavLink className='hover:text-pink-400' to={n.path} key={i} >{n.label}</NavLink>
         })}
+
         <form onSubmit={formik.handleSubmit}>
 
           <label htmlFor="search"></label>
           <div className='relative'>
-            <input type="text" name='search' value={formik.values.search} className='outline-none rounded-lg pl-2 py-1 text-black' />
+            <input
+              type="text"
+              name='search'
+              placeholder='search movies'
+              value={formik.values.search}
+              onChange={formik.handleChange}
+              className='outline-none rounded-lg pl-2 py-1 text-black' />
+            <button type='submit'>
+              <i className="fa-solid fa-magnifying-glass absolute right-2 text-black top-2"></i>
+            </button>
+
+
           </div>
 
         </form>

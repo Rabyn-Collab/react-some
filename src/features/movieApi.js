@@ -1,6 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 
+const apiKey = '92c1e33f015755d27a231793c44ecfed';
+
 export const movieApi = createApi({
   reducerPath: 'movieApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.themoviedb.org/3/' }),
@@ -8,26 +10,44 @@ export const movieApi = createApi({
   endpoints: (builder) => ({
 
 
-
-    getMovieByCategory: builder.query({
+    getTrendingMovie: builder.query({
       query: (q) => ({
-        url: q,
+        url: '/trending/all/day',
         params: {
-          api_key: '92c1e33f015755d27a231793c44ecfed'
+          api_key: apiKey
         }
       }),
     }),
 
-    getSearcMovie: builder.query({
+
+    getMovieByCategory: builder.query({
+      query: (q) => ({
+        url: `/movie/${q}`,
+        params: {
+          api_key: apiKey
+        }
+      }),
+    }),
+
+
+    getSearchMovie: builder.query({
       query: (searchText) => ({
         url: '/search/movie',
         params: {
-          api_key: '92c1e33f015755d27a231793c44ecfed',
+          api_key: apiKey,
           query: searchText
-        }
+        },
+      }),
+    }),
+
+    getVideoMovie: builder.query({
+      query: (movieId) => ({
+        url: `/movie/${movieId}/videos`,
+        params: {
+          api_key: apiKey,
+        },
       }),
     })
-
 
 
 
@@ -38,4 +58,4 @@ export const movieApi = createApi({
 });
 
 
-export const { useGetMovieByCategoryQuery, useGetSearcMovieQuery } = movieApi;
+export const { useGetMovieByCategoryQuery, useGetSearchMovieQuery, useGetTrendingMovieQuery, useGetVideoMovieQuery } = movieApi;

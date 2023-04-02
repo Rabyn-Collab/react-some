@@ -8,9 +8,11 @@ module.exports = withMT({
   ],
   theme: {
     extend: {
+
       gridTemplateColumns: {
         'grid4': 'repeat(auto-fit, minmax(300px, 1fr))'
-      }
+      },
+
     },
     screens: {
       '2xl': { 'max': '1536px' },

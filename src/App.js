@@ -1,10 +1,10 @@
 import React from 'react'
 import { Route, Routes } from 'react-router'
 import Header from './component/Header'
-import { useGetMovieByCategoryQuery } from './features/movieApi'
 import Home from './pages/Home'
-import Main from './pages/Main'
 import Search from './pages/Search'
+import MovieByCategory from './pages/MovieByCategory'
+import Detail from './component/Detail'
 
 
 const App = () => {
@@ -18,8 +18,9 @@ const App = () => {
 
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='movie/:category' element={<Main />} />
-        <Route path='movie/:search' element={<Search />} />
+        <Route path='movie/:category' element={<MovieByCategory />} />
+        <Route path='movie/search/:search' element={<Search />} />
+        <Route path='movie/detail/:id' element={<Detail />} />
       </Routes>
 
 
