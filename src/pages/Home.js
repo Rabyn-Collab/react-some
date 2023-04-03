@@ -8,7 +8,7 @@ const Home = () => {
 
   return (
     <>
-      <DataShow data={data} isLoading={isLoading} />
+      <DataShow data={data} isLoading={isLoading} isPage={false} />
     </>
   )
 }

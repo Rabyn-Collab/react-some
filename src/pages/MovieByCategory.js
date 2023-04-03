@@ -10,7 +10,7 @@ const MovieByCategory = () => {
 
   return (
     <div>
-      <DataShow data={data} isLoading={isLoading} category={category} isPage={true} />
+      <DataShow data={data} isLoading={isLoading} isPage={true} category={category} />
       <Outlet />
     </div>
   )
