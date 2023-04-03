@@ -6,8 +6,10 @@ import Search from './pages/Search'
 import MovieByCategory from './pages/MovieByCategory'
 import Detail from './component/Detail'
 import PageQuery from './pages/PageQuery'
+import FullMovie from './pages/FullMovie'
+import FullDetail from './pages/FullDetail'
 
-// hello sample
+
 
 const App = () => {
 
@@ -21,6 +23,8 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='movie/:category' element={<MovieByCategory />} />
+        <Route path='movie/watch-online' element={<FullMovie />} />
+        <Route path='movie/watch/:detail' element={<FullDetail />} />
         <Route path='movie/search/:search' element={<Search />} />
         <Route path='movie/page/:page' element={<PageQuery />} />
         <Route path='movie/detail/:id' element={<Detail />} />
