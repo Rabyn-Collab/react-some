@@ -7,7 +7,7 @@ import MovieByCategory from './pages/MovieByCategory'
 import Detail from './component/Detail'
 import PageQuery from './pages/PageQuery'
 
-
+// hello sample
 
 const App = () => {
 
