@@ -20,6 +20,10 @@ const Header = () => {
 
   const navs = [
     {
+      label: 'News',
+      path: 'news/show'
+    },
+    {
       label: 'Must See',
       path: 'movie/watch-online'
     },
